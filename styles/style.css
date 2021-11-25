@@ -1,0 +1,25 @@
+.parent {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(5, 40px);
+    grid-column-gap: 1px;
+    grid-row-gap: 1px;
+    }
+.cell {
+    border: 1px solid lightgray;
+}
+#sidebar{
+    height: 100%;
+    width: 19%;
+    float: left;
+    background-color: lightblue;
+}
+
+#mygrid{
+    width: 80%;
+    float: left;
+    margin-left: 2px;
+}
+
+
+  
