@@ -3,8 +3,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/style.css" types="text/css"/>
-    <script src="/scripts/script.js" types="text/javascript"></script>
+    <link rel="stylesheet" href="styles/style.css" types="text/css"/>
+    <script src="scripts/script.js" types="text/javascript"></script>
 
     <script type="text/javascript">
         function getDate(){
@@ -16,10 +16,10 @@
     <title>Document</title>
     <link rel="shortcut icon" href="#">
 </head>
-<body>
+<body onload="getDate()">
     
     <div onload='displayCurrentDate()' id="sidebar">
-        <p onLoad='getDate()' id="Date"></p>
+        <p id="Date"></p>
     </div>
     <div id="mygrid">
         <div class="parent">
