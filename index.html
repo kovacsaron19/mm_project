@@ -5,12 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/style.css" types="text/css"/>
     <script src="/scripts/script.js" types="text/javascript"></script>
+
+    <script type="text/javascript">
+        function getDate(){
+          var cDate=new Date();
+          document.getElementById("Date").innerHTML = cDate.toString();
+        }
+      </script>
+
     <title>Document</title>
     <link rel="shortcut icon" href="#">
 </head>
 <body>
-    <div id="sidebar">
-
+    
+    <div onload='displayCurrentDate()' id="sidebar">
+        <p onLoad='getDate()' id="Date"></p>
     </div>
     <div id="mygrid">
         <div class="parent">
