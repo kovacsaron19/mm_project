@@ -7,9 +7,16 @@
     <script src="scripts/script.js" types="text/javascript"></script>
 
     <script type="text/javascript">
+        window.onload = function(){
+            var cDate=new Date();
+            displayCalendar(cDate);
+        }
+
+
         function getDate(){
           var cDate=new Date();
           document.getElementById("Date").innerHTML = cDate.toString();
+          displayCalendar(cDate);
         }
       </script>
 
@@ -18,11 +25,11 @@
 </head>
 <body onload="getDate()">
     
-    <div onload='displayCurrentDate()' id="sidebar">
+    <div id="sidebar">
         <p id="Date"></p>
     </div>
     <div id="mygrid">
-        <div class="parent">
+        <div class="parent" id="mygrid2">
             <div class="cell"></div>
             <div class="cell"></div>
             <div class="cell"></div>
