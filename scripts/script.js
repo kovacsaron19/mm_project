@@ -78,6 +78,13 @@ function displayCalendar(date) {
     // }
 }
 
+function changeMonthMinus(){
+    var newDate = new Date(document.getElementById("Date").innerHTML)
+    console.log(newDate);
+    newDate.setMonth(newDate.getMonth() - 1);
+    document.getElementById("Date").innerHTML = newDate;
+    displayCalendar(newDate);
+}
 
 
 
