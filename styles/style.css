@@ -4,6 +4,7 @@
     grid-template-rows: repeat(6, 100px);
     grid-column-gap: 1px;
     grid-row-gap: 1px;
+    height: 90%;
     }
 .cell {
     border: 1px solid lightgray;
@@ -18,8 +19,48 @@
 #mygrid{
     width: 80%;
     float: left;
-    margin-left: 2px;
+    margin: 2px;
+    /* border-right: 3px solid lightgray;
+    border-left: 3px solid lightgray;
+    border-top: 3px solid lightgray; */
 }
 
+#navbar{
+    display: table-cell;
+    vertical-align: middle;
+    
+    float: left;
+    height: 10%;
+    width: 80%;
+    border: 3px solid lightgray;
+    margin: 1px;
+    text-align: center;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    
+}
 
+/* #tableidk{
+    height: 10%;
+    width: 80%;
+    display: table;
+} */
+
+.container {
+    height: 10%;
+    width: 80%;
+    border: 3px solid lightgray;
+    margin: 1px;
+    justify-content: center;
+    float: left;
+    position: relative;
+  }
   
+  .vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }

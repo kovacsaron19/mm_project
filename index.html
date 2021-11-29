@@ -15,6 +15,7 @@
 
         function getDate(){
           var cDate=new Date();
+          document.getElementById("navbar").innerHTML = cDate.getFullYear()+'-'+(cDate.getMonth()+1)+'-'+cDate.getDate();
           document.getElementById("Date").innerHTML = cDate.getFullYear()+'-'+(cDate.getMonth()+1)+'-'+cDate.getDate(); //cDate.toString(); 
           displayCalendar(cDate);
         }
@@ -29,6 +30,14 @@
         <p id="Date"></p>
         <button onclick="changeMonthMinus()">pick me</button>
     </div>
+    <!-- <div id="navbar"></div> -->
+
+    <div class="container">
+        <div class="vertical-center">
+          <p>I am vertically centered.</p>
+        </div>
+    </div>
+
     <div id="mygrid">
         <div class="parent" id="mygrid2">
             <div class="cell Monday"></div>
