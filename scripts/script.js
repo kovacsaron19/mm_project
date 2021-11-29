@@ -33,6 +33,7 @@ function calculateFirstDay(date) {
 }
 
 function displayCalendar(date) {
+    console.log("here")
     let cellDate = 1;
     var firstWeekday = calculateFirstDay(date);
     var year = date.getFullYear();
@@ -40,6 +41,10 @@ function displayCalendar(date) {
     var lastDate = new Date(year, month+1, 0).getDate();
 
     let children = document.getElementsByClassName("cell");
+    for(i = 0; i < children.length; i++){
+        children[i].innerHTML = "";
+    }
+
     let child = children[0];
     let count = 1;
     let ok = true;
