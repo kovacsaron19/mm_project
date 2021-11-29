@@ -41,6 +41,7 @@ function displayCalendar(date) {
     var lastDate = new Date(year, month+1, 0).getDate();
 
     let children = document.getElementsByClassName("cell");
+    console.log(children)
     for(i = 0; i < children.length; i++){
         children[i].innerHTML = "";
     }
@@ -48,6 +49,8 @@ function displayCalendar(date) {
     let child = children[0];
     let count = 1;
     let ok = true;
+    console.log(child)
+    console.log(child.classList)
 
     while (ok) {
         if (child.classList.contains(DaysEnums[firstWeekday])) {
@@ -85,7 +88,6 @@ function displayCalendar(date) {
 
 function changeMonthMinus(){
     var newDate = new Date(document.getElementById("Date").innerHTML)
-    console.log(newDate);
     newDate.setMonth(newDate.getMonth() - 1);
     document.getElementById("Date").innerHTML = newDate;
     displayCalendar(newDate);
