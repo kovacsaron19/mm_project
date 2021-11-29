@@ -24,7 +24,7 @@ function calculateFirstDay(date) {
     var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
     firstDay = firstDay.getDay();
     if (firstDay == 0) {
-        firstDay = 7;
+        firstDay = 6;
     }
     else {
         firstDay -= 1;
@@ -53,6 +53,8 @@ function displayCalendar(date) {
     console.log(child.classList)
 
     while (ok) {
+        console.log(child);
+        console.log(firstWeekday)
         if (child.classList.contains(DaysEnums[firstWeekday])) {
             child.innerHTML = cellDate;
             cellDate+=1;
