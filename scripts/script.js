@@ -92,6 +92,15 @@ function changeMonthMinus(){
     var newDate = new Date(document.getElementById("Date").innerHTML)
     newDate.setMonth(newDate.getMonth() - 1);
     document.getElementById("Date").innerHTML = newDate;
+    document.getElementById("navbarText").innerHTML = newDate.getFullYear()+'-'+(newDate.getMonth()+1)+'-'+newDate.getDate();
+    displayCalendar(newDate);
+}
+
+function changeMonthPlus(){
+    var newDate = new Date(document.getElementById("Date").innerHTML)
+    newDate.setMonth(newDate.getMonth() + 1);
+    document.getElementById("Date").innerHTML = newDate;
+    document.getElementById("navbarText").innerHTML = newDate.getFullYear()+'-'+(newDate.getMonth()+1)+'-'+newDate.getDate();
     displayCalendar(newDate);
 }
 
