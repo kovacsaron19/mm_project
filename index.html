@@ -1,92 +1,104 @@
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css" types="text/css"/>
-    <script src="scripts/script.js" types="text/javascript"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/style.css" types="text/css" />
+  <script src="scripts/script.js" types="text/javascript"></script>
 
-    <script type="text/javascript">
-        // window.onload = function(){
-        //     var cDate=new Date();
-        //     displayCalendar(cDate);
-        // }
+  <script type="text/javascript">
+    // window.onload = function(){
+    //     var cDate=new Date();
+    //     displayCalendar(cDate);
+    // }
 
 
-        function getDate(){
-          var cDate=new Date();
-        //   document.getElementById("navbar").innerHTML = cDate.getFullYear()+'-'+(cDate.getMonth()+1)+'-'+cDate.getDate();
-        document.getElementById("navbarText").innerHTML = cDate.getFullYear()+'-'+(cDate.getMonth()+1)+'-'+cDate.getDate();
-          document.getElementById("Date").innerHTML = cDate.getFullYear()+'-'+(cDate.getMonth()+1)+'-'+cDate.getDate(); //cDate.toString(); 
-          displayCalendar(cDate);
-        }
-      </script>
+    function getDate() {
+      var cDate = new Date();
+      //   document.getElementById("navbar").innerHTML = cDate.getFullYear()+'-'+(cDate.getMonth()+1)+'-'+cDate.getDate();
+      document.getElementById("Date").innerHTML = cDate.getFullYear() + '-' + (cDate.getMonth() + 1) + '-' + cDate.getDate(); //cDate.toString(); 
+      document.getElementById("navbarText").innerHTML = cDate.getFullYear() + '-' + (cDate.getMonth() + 1) + '-' + cDate.getDate();
+      displayCalendar(cDate);
+    }
+  </script>
 
-    <title>Document</title>
-    <link rel="shortcut icon" href="#">
+  <title>Document</title>
+  <link rel="shortcut icon" href="#">
 </head>
+
 <body onload="getDate()">
-    
-    <div id="sidebar">
-        <p id="Date"></p>
-        
-    </div>
-    <!-- <div id="navbar"></div> -->
 
-    <div class="container">
-        <div class="vertical-center">
-            <button onclick="changeMonthMinus()">pick me</button>
-          <p id="navbarText">I am vertically centered.</p>
-          <button onclick="changeMonthPlus()">pick me</button>
-        </div>
-    </div>
+  <div id="sidebar">
+    <p id="Date"></p>
 
-    <div id="mygrid">
-        <div class="parent" id="mygrid2">
-            <div class="cell Monday"></div>
-            <div class="cell Tuesday"></div>
-            <div class="cell Wednesday"></div>
-            <div class="cell Thursday"></div>
-            <div class="cell Friday"></div>
-            <div class="cell Saturday"></div>
-            <div class="cell Sunday"></div>
-            <div class="cell Monday"></div>
-            <div class="cell Tuesday"></div>
-            <div class="cell Wednesday"></div>
-            <div class="cell Thursday"></div>
-            <div class="cell Friday"></div>
-            <div class="cell Saturday"></div>
-            <div class="cell Sunday"></div>
-            <div class="cell Monday"></div>
-            <div class="cell Tuesday"></div>
-            <div class="cell Wednesday"></div>
-            <div class="cell Thursday"></div>
-            <div class="cell Friday"></div>
-            <div class="cell Saturday"></div>
-            <div class="cell Sunday"></div>
-            <div class="cell Monday"></div>
-            <div class="cell Tuesday"></div>
-            <div class="cell Wednesday"></div>
-            <div class="cell Thursday"></div>
-            <div class="cell Friday"></div>
-            <div class="cell Saturday"></div>
-            <div class="cell Sunday"></div>
-            <div class="cell Monday"></div>
-            <div class="cell Tuesday"></div>
-            <div class="cell Wednesday"></div>
-            <div class="cell Thursday"></div>
-            <div class="cell Friday"></div>
-            <div class="cell Saturday"></div>
-            <div class="cell Sunday"></div>
-            <div class="cell Monday"></div>
-            <div class="cell Tuesday"></div>
-            <div class="cell Wednesday"></div>
-            <div class="cell Thursday"></div>
-            <div class="cell Friday"></div>
-            <div class="cell Saturday"></div>
-            <div class="cell Sunday"></div>
-        </div>
+  </div>
+  <!-- <div id="navbar"></div> -->
+
+  <div class="container">
+    <div class="vertical-center">
+      <button onclick="changeMonthMinus()">pick me</button>
+      <p id="navbarText">I am vertically centered.</p>
+      <button onclick="changeMonthPlus()">pick me</button>
     </div>
-    
+  </div>
+
+  <div id="mygrid">
+    <div class="daysOfTheWeek">
+      <div class="day">Monday</div>
+      <div class="day">Tuesday</div>
+      <div class="day">Wednesday</div>
+      <div class="day">Thursday</div>
+      <div class="day">Friday</div>
+      <div class="day">Saturday</div>
+      <div class="day">Sunday</div>
+    </div>
+    <div class="parent" id="mygrid2">
+      <div class="cell Monday"></div>
+      <div class="cell Tuesday"></div>
+      <div class="cell Wednesday"></div>
+      <div class="cell Thursday"></div>
+      <div class="cell Friday"></div>
+      <div class="cell Saturday"></div>
+      <div class="cell Sunday"></div>
+      <div class="cell Monday"></div>
+      <div class="cell Tuesday"></div>
+      <div class="cell Wednesday"></div>
+      <div class="cell Thursday"></div>
+      <div class="cell Friday"></div>
+      <div class="cell Saturday"></div>
+      <div class="cell Sunday"></div>
+      <div class="cell Monday"></div>
+      <div class="cell Tuesday"></div>
+      <div class="cell Wednesday"></div>
+      <div class="cell Thursday"></div>
+      <div class="cell Friday"></div>
+      <div class="cell Saturday"></div>
+      <div class="cell Sunday"></div>
+      <div class="cell Monday"></div>
+      <div class="cell Tuesday"></div>
+      <div class="cell Wednesday"></div>
+      <div class="cell Thursday"></div>
+      <div class="cell Friday"></div>
+      <div class="cell Saturday"></div>
+      <div class="cell Sunday"></div>
+      <div class="cell Monday"></div>
+      <div class="cell Tuesday"></div>
+      <div class="cell Wednesday"></div>
+      <div class="cell Thursday"></div>
+      <div class="cell Friday"></div>
+      <div class="cell Saturday"></div>
+      <div class="cell Sunday"></div>
+      <div class="cell Monday"></div>
+      <div class="cell Tuesday"></div>
+      <div class="cell Wednesday"></div>
+      <div class="cell Thursday"></div>
+      <div class="cell Friday"></div>
+      <div class="cell Saturday"></div>
+      <div class="cell Sunday"></div>
+    </div>
+  </div>
+
 </body>
+
 </html>

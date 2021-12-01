@@ -1,6 +1,11 @@
 
 const DaysEnums = { 0: "Monday", 1: "Tuesday", 2: "Wednesday", 3: "Thursday", 4: "Friday", 5: "Saturday", 6: "Sunday" }
 
+function displayDate(cDate){
+    document.getElementById("Date").innerHTML = cDate.getFullYear()+'-'+(cDate.getMonth()+1)+'-'+cDate.getDate(); //cDate.toString(); 
+    document.getElementById("navbarText").innerHTML = cDate.getFullYear()+'-'+(cDate.getMonth()+1)+'-'+cDate.getDate();
+}
+
 function calculateFirstDay(date) {
     // var day = cDate2.getDate();
     // console.log(day);
@@ -32,8 +37,37 @@ function calculateFirstDay(date) {
     return firstDay;
 }
 
+function setCurrent (date) {
+    var dayOfWeek = date.getDay();
+    
+    if(dayOfWeek == 0){
+        dayOfWeek = 6;
+    }
+    else {
+        dayOfWeek -=1;
+    }
+
+    let pasts = document.getElementsByClassName("current");
+    // console.log(pasts);
+    if(pasts[0]){
+        pasts[0].classList.remove("current");
+    }
+
+    let children = document.getElementsByClassName(DaysEnums[dayOfWeek]);
+    for(var i = 0; i < children.length; i++){
+        const innerHtml = children[i].innerHTML;
+        //console.log(i + " " + innerHtml + " " + date.getDate());
+        if(children[i].innerHTML == date.getDate()){
+            children[i].classList.add("current");
+            // console.log(children[i].classList);
+        }
+        
+    }
+}
+
 function displayCalendar(date) {
-    console.log("here")
+    // console.log("here")
+    displayDate(date);
     let cellDate = 1;
     var firstWeekday = calculateFirstDay(date);
     var year = date.getFullYear();
@@ -41,7 +75,7 @@ function displayCalendar(date) {
     var lastDate = new Date(year, month+1, 0).getDate();
 
     let children = document.getElementsByClassName("cell");
-    console.log(children)
+    // console.log(children)
     for(i = 0; i < children.length; i++){
         children[i].innerHTML = "";
     }
@@ -49,12 +83,12 @@ function displayCalendar(date) {
     let child = children[0];
     let count = 1;
     let ok = true;
-    console.log(child)
-    console.log(child.classList)
+    // console.log(child)
+    // console.log(child.classList)
 
     while (ok) {
-        console.log(child);
-        console.log(firstWeekday)
+        // console.log(child);
+        // console.log(firstWeekday)
         if (child.classList.contains(DaysEnums[firstWeekday])) {
             child.innerHTML = cellDate;
             cellDate+=1;
@@ -74,18 +108,22 @@ function displayCalendar(date) {
         count += 1;
     }
 
-    // for (let i = 0; i < 6; i++) {
-    //     let j = 0;
-    //     if(i===0){
-    //         j = firstWeekday;
-    //     }
-    //     for (j; j <= 7; j++) {
-    //         console.log(grid)
-    //         console.log(grid.rows[0].cells[0])
-    //         var cell = grid.
-    //         cell.innerHtml = "a";
-    //     }
-    // }
+    setCurrent(date);
+
+    var grid = document.getElementById("mygrid2");
+
+    grid.addEventListener("click", function(event){
+        // console.log(event.target);
+        if(event.target != null){
+            var past = document.getElementsByClassName("current");
+            past[0].classList.remove("current");
+        }
+        event.target.classList.add("current");
+
+        let dayOfMonth = event.target.innerHTML;
+
+        // displayDate(date.getFullYear(), date.getMonth(), dayOfMonth);
+    })
 }
 
 function changeMonthMinus(){

@@ -1,3 +1,14 @@
+.daysOfTheWeek {
+    display: grid;
+    grid-template-areas: "a a a a a a a";
+    grid-template-rows: (7, 1fr);
+    grid-template-rows: 25px;
+    grid-gap: 1px;
+}
+.day {
+    border: 1px solid lightgray;
+    font-weight: bold;
+}
 .parent {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -64,3 +75,7 @@
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
   }
+
+.current {
+    background-color: lightblue;
+}
