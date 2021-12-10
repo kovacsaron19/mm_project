@@ -80,3 +80,7 @@
 .current {
     background-color: lightblue;
 }
+.event{
+    background-color: darkgoldenrod;
+    position: absolute;
+}
