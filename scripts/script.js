@@ -1,9 +1,9 @@
 
 const DaysEnums = { 0: "Monday", 1: "Tuesday", 2: "Wednesday", 3: "Thursday", 4: "Friday", 5: "Saturday", 6: "Sunday" }
 
-function displayDate(cDate){
-    document.getElementById("Date").innerHTML = cDate.getFullYear()+'-'+(cDate.getMonth()+1)+'-'+cDate.getDate(); //cDate.toString(); 
-    document.getElementById("navbarText").innerHTML = cDate.getFullYear()+'-'+(cDate.getMonth()+1)+'-'+cDate.getDate();
+function displayDate(cDate) {
+    document.getElementById("Date").innerHTML = cDate.getFullYear() + '-' + (cDate.getMonth() + 1) + '-' + cDate.getDate(); //cDate.toString(); 
+    document.getElementById("navbarText").innerHTML = cDate.getFullYear() + '-' + (cDate.getMonth() + 1) + '-' + cDate.getDate();
 }
 
 function calculateFirstDay(date) {
@@ -37,31 +37,31 @@ function calculateFirstDay(date) {
     return firstDay;
 }
 
-function setCurrent (date) {
+function setCurrent(date) {
     var dayOfWeek = date.getDay();
-    
-    if(dayOfWeek == 0){
+
+    if (dayOfWeek == 0) {
         dayOfWeek = 6;
     }
     else {
-        dayOfWeek -=1;
+        dayOfWeek -= 1;
     }
 
     let pasts = document.getElementsByClassName("current");
     // console.log(pasts);
-    if(pasts[0]){
+    if (pasts[0]) {
         pasts[0].classList.remove("current");
     }
 
     let children = document.getElementsByClassName(DaysEnums[dayOfWeek]);
-    for(var i = 0; i < children.length; i++){
+    for (var i = 0; i < children.length; i++) {
         const innerHtml = children[i].innerHTML;
         //console.log(i + " " + innerHtml + " " + date.getDate());
-        if(children[i].innerHTML == date.getDate()){
+        if (children[i].innerHTML == date.getDate()) {
             children[i].classList.add("current");
             // console.log(children[i].classList);
         }
-        
+
     }
 }
 
@@ -72,11 +72,11 @@ function displayCalendar(date) {
     var firstWeekday = calculateFirstDay(date);
     var year = date.getFullYear();
     var month = date.getMonth();
-    var lastDate = new Date(year, month+1, 0).getDate();
+    var lastDate = new Date(year, month + 1, 0).getDate();
 
     let children = document.getElementsByClassName("cell");
     // console.log(children)
-    for(i = 0; i < children.length; i++){
+    for (i = 0; i < children.length; i++) {
         children[i].innerHTML = "";
     }
 
@@ -91,7 +91,7 @@ function displayCalendar(date) {
         // console.log(firstWeekday)
         if (child.classList.contains(DaysEnums[firstWeekday])) {
             child.innerHTML = cellDate;
-            cellDate+=1;
+            cellDate += 1;
             child = children[count];
             count += 1;
             ok = false;
@@ -112,9 +112,9 @@ function displayCalendar(date) {
 
     var grid = document.getElementById("mygrid2");
 
-    grid.addEventListener("click", function(event){
-        // console.log(event.target);
-        if(event.target != null){
+    grid.addEventListener("click", function (event) {
+        // console.log("click ", event.target);
+        if (event.target != null) {
             var past = document.getElementsByClassName("current");
             // console.log(document.getElementsByClassName("current"));
             // console.log(document.querySelector(".current"));
@@ -143,21 +143,51 @@ function displayCalendar(date) {
         // Alert the key name and key code on keydown
         
       }, false);
+  
+    let eventStart = null;
+
+    grid.addEventListener("mousedown", function (event) {
+        console.log("mousedown ", event.target);
+        eventStart = event.target;
+    })
+
+    grid.addEventListener('mouseup', function (event) {
+        console.log("mouseup ", event.target);
+        if (eventStart != event.target) {
+            let divEl = document.createElement('div');
+            divEl.classList.add('event');
+            divEl.innerHTML = "Event";
+            // divEl.setAttribute("padding-right", "1000px");
+            // add style for divEl
+            divEl.style.paddingRight = '100px';
+            eventStart.appendChild(divEl);
+        }
+    })
+
+    grid.addEventListener('dblclick', function (event) {
+        console.log("dblclick", event.target);
+        let divEl = document.createElement('div');
+        divEl.classList.add('event');
+        divEl.innerHTML = "Event";
+        event.target.appendChild(divEl);
+
+    })
+
 }
 
-function changeMonthMinus(){
+function changeMonthMinus() {
     var newDate = new Date(document.getElementById("Date").innerHTML)
     newDate.setMonth(newDate.getMonth() - 1);
     document.getElementById("Date").innerHTML = newDate;
-    document.getElementById("navbarText").innerHTML = newDate.getFullYear()+'-'+(newDate.getMonth()+1)+'-'+newDate.getDate();
+    document.getElementById("navbarText").innerHTML = newDate.getFullYear() + '-' + (newDate.getMonth() + 1) + '-' + newDate.getDate();
     displayCalendar(newDate);
 }
 
-function changeMonthPlus(){
+function changeMonthPlus() {
     var newDate = new Date(document.getElementById("Date").innerHTML)
     newDate.setMonth(newDate.getMonth() + 1);
     document.getElementById("Date").innerHTML = newDate;
-    document.getElementById("navbarText").innerHTML = newDate.getFullYear()+'-'+(newDate.getMonth()+1)+'-'+newDate.getDate();
+    document.getElementById("navbarText").innerHTML = newDate.getFullYear() + '-' + (newDate.getMonth() + 1) + '-' + newDate.getDate();
     displayCalendar(newDate);
 }
 
