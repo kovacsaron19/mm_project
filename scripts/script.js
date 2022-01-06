@@ -138,6 +138,9 @@ function displayCalendar(date) {
             let divEl = document.createElement('div');
             divEl.classList.add('event');
             divEl.innerHTML = "Event";
+            // divEl.setAttribute("padding-right", "1000px");
+            // add style for divEl
+            divEl.style.paddingRight = '100px';
             eventStart.appendChild(divEl);
         }
     })

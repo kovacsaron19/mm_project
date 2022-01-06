@@ -83,4 +83,5 @@
 .event{
     background-color: darkgoldenrod;
     position: absolute;
+    z-index: 9;
 }
