@@ -116,6 +116,10 @@ function displayCalendar(date) {
         // console.log("click ", event.target);
         if (event.target != null) {
             var past = document.getElementsByClassName("current");
+            // console.log(document.getElementsByClassName("current"));
+            // console.log(document.querySelector(".current"));
+            // console.log(document.getElementsByClassName("current").nextSibling);
+            // console.log(document.querySelector(".current").nextElementSibling);
             past[0].classList.remove("current");
         }
         event.target.classList.add("current");
@@ -125,6 +129,21 @@ function displayCalendar(date) {
         // displayDate(date.getFullYear(), date.getMonth(), dayOfMonth);
     })
 
+    document.addEventListener('keyup', (event) => {
+        if(event.key === 'ArrowRight'){
+            var past = document.querySelector(".current");
+            // console.log(past.nextElementSibling)
+            // console.log(past.nextElementSibling)
+            past.classList.remove("current");
+            var next = past.nextElementSibling
+            next.classList.add("current")
+            // alert(`Key pressed ${name} \r\n Key code value: ${code}`);
+            // past.nextElementSibling.classList.add("current");
+        }
+        // Alert the key name and key code on keydown
+        
+      }, false);
+  
     let eventStart = null;
 
     grid.addEventListener("mousedown", function (event) {
@@ -153,6 +172,7 @@ function displayCalendar(date) {
         event.target.appendChild(divEl);
 
     })
+
 }
 
 function changeMonthMinus() {
