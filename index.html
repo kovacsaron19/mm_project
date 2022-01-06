@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles/style.css" types="text/css" />
   <script src="scripts/script.js" types="text/javascript"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
 
   <script type="text/javascript">
     // window.onload = function(){
@@ -36,7 +37,8 @@
       <input type="text" name="Name" id="eventname"><br><br>
       <label for="Description">Description</label>
       <textarea id="eventdescription" name="Description" rows="5" cols="20"></textarea>
-        <br><br>
+      <br><br>
+      <button class="btn btn-success btn-lg"><i id="listenIcon" class="bi bi-mic"></i> <span id="listen">Press to listen</span></button>
       <input type="button" value="Submit" onclick="getEventData()">
     </form>
 

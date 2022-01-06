@@ -121,6 +121,7 @@ function displayCalendar(date) {
             console.log(dayEvent[0])
             console.log(divEl)
             console.log(child)
+            console.log(children[count-1])
             divEl.classList.add('event');
             divEl.innerHTML = dayEvent[0].name;
             console.log(child.appendChild(divEl))
@@ -198,7 +199,27 @@ function displayCalendar(date) {
 
     })
 
-    
+    // speechRec();
+
+    var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+    var recognition = new SpeechRecognition();
+    recognition.lang = 'en-US';
+
+    var speechBtn = document.getElementById("listen")
+    console.log(speechBtn)
+    speechBtn.addEventListener('click', function(event){
+        console.log('hi mom')
+        recognition.start();
+    })
+
+    // recognition.onspeechend = () => {
+    //     recognition.stop();
+    // }
+
+    recognition.onresult = (event) => {
+        console.log(event.results)
+        
+    }  
 
 }
 
@@ -239,6 +260,10 @@ function changeMonthPlus() {
     globalCurrentDate.month = newDate.getMonth()+1;
     globalCurrentDate.year = newDate.getFullYear();
     displayCalendar(newDate);
+}
+
+function speechRec(){
+    
 }
 
 
