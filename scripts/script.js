@@ -201,25 +201,24 @@ function displayCalendar(date) {
 
     // speechRec();
 
-    var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
-    var recognition = new SpeechRecognition();
-    recognition.lang = 'en-US';
+    // var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+    // var recognition = new SpeechRecognition();
+    // recognition.lang = 'en-US';
 
-    var speechBtn = document.getElementById("listen")
-    console.log(speechBtn)
-    speechBtn.addEventListener('click', function(event){
-        console.log('hi mom')
-        recognition.start();
-    })
+    // var speechBtn = document.getElementById("listen")
+    // speechBtn.addEventListener('click', function(event){
+    //     console.log('hi mom')
+    //     recognition.start();
+    // })
 
-    // recognition.onspeechend = () => {
-    //     recognition.stop();
-    // }
+    // // recognition.onspeechend = () => {
+    // //     recognition.stop();
+    // // }
 
-    recognition.onresult = (event) => {
-        console.log(event.results)
+    // recognition.onresult = (event) => {
+    //     console.log(event.results)
         
-    }  
+    // }  
 
 }
 
@@ -262,9 +261,9 @@ function changeMonthPlus() {
     displayCalendar(newDate);
 }
 
-function speechRec(){
+// function speechRec(){
     
-}
+// }
 
 
 
