@@ -1,6 +1,15 @@
 
 const DaysEnums = { 0: "Monday", 1: "Tuesday", 2: "Wednesday", 3: "Thursday", 4: "Friday", 5: "Saturday", 6: "Sunday" }
 
+var cDate = new Date();
+
+var allEvents = []
+
+var globalCurrentDate = {
+    month:cDate.getMonth() + 1,
+    year:cDate.getFullYear()
+}
+
 function displayDate(cDate) {
     document.getElementById("Date").innerHTML = cDate.getFullYear() + '-' + (cDate.getMonth() + 1) + '-' + cDate.getDate(); //cDate.toString(); 
     document.getElementById("navbarText").innerHTML = cDate.getFullYear() + '-' + (cDate.getMonth() + 1) + '-' + cDate.getDate();
@@ -86,6 +95,10 @@ function displayCalendar(date) {
     // console.log(child)
     // console.log(child.classList)
 
+    let specificEvents = allEvents.filter((event) => {return event.date.includes(`${globalCurrentDate.year}-${globalCurrentDate.month}`)})
+    // console.log(specificEvents)
+    // console.log(`${globalCurrentDate.year}-${globalCurrentDate.month}`)
+
     while (ok) {
         // console.log(child);
         // console.log(firstWeekday)
@@ -102,6 +115,17 @@ function displayCalendar(date) {
         }
     }
     while (cellDate <= lastDate) {
+        let dayEvent = specificEvents.filter((event) => {return event.date.includes(`${globalCurrentDate.year}-${globalCurrentDate.month}-${cellDate}`)})
+        let divEl = document.createElement('div');
+        if(dayEvent.length !== 0){
+            console.log(dayEvent[0])
+            console.log(divEl)
+            console.log(child)
+            divEl.classList.add('event');
+            divEl.innerHTML = dayEvent[0].name;
+            console.log(child.appendChild(divEl))
+            child.appendChild(divEl)
+        }
         child.innerHTML = cellDate;
         cellDate += 1;
         child = children[count];
@@ -115,6 +139,7 @@ function displayCalendar(date) {
     grid.addEventListener("click", function (event) {
         // console.log("click ", event.target);
         if (event.target != null) {
+            document.getElementById("Date").innerHTML= globalCurrentDate.year + '-' + globalCurrentDate.month + '-' + event.target.innerHTML;
             var past = document.getElementsByClassName("current");
             // console.log(document.getElementsByClassName("current"));
             // console.log(document.querySelector(".current"));
@@ -173,6 +198,27 @@ function displayCalendar(date) {
 
     })
 
+    
+
+}
+
+function getEventData(){
+    let nameField = document.getElementById("eventname").value
+    let descriptionField = document.getElementById("eventdescription").value
+    let newEvent = {
+        name:nameField,
+        description:descriptionField,
+        date:document.getElementById("Date").innerHTML
+    }
+    allEvents.push(newEvent)
+    let divEl = document.createElement('div');
+    divEl.classList.add('event');
+    divEl.innerHTML = newEvent.name;
+    var cell = document.querySelector(".current");
+    cell.appendChild(divEl)
+    document.getElementById("eventname").value = ""
+    document.getElementById("eventdescription").value = ""
+
 }
 
 function changeMonthMinus() {
@@ -180,6 +226,8 @@ function changeMonthMinus() {
     newDate.setMonth(newDate.getMonth() - 1);
     document.getElementById("Date").innerHTML = newDate;
     document.getElementById("navbarText").innerHTML = newDate.getFullYear() + '-' + (newDate.getMonth() + 1) + '-' + newDate.getDate();
+    globalCurrentDate.month = newDate.getMonth()+1;
+    globalCurrentDate.year = newDate.getFullYear();
     displayCalendar(newDate);
 }
 
@@ -188,6 +236,8 @@ function changeMonthPlus() {
     newDate.setMonth(newDate.getMonth() + 1);
     document.getElementById("Date").innerHTML = newDate;
     document.getElementById("navbarText").innerHTML = newDate.getFullYear() + '-' + (newDate.getMonth() + 1) + '-' + newDate.getDate();
+    globalCurrentDate.month = newDate.getMonth()+1;
+    globalCurrentDate.year = newDate.getFullYear();
     displayCalendar(newDate);
 }
 
