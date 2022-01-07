@@ -199,6 +199,22 @@ function displayCalendar(date) {
 
     })
 
+    let box = document.getElementsByClassName("container")
+    box[0].removeAttribute('id')
+    console.log(globalCurrentDate.month)
+    if(globalCurrentDate.month == 1 || globalCurrentDate.month == 2 || globalCurrentDate.month == 12){
+        box[0].id = 'scheme1'
+    }
+    if(globalCurrentDate.month == 3 || globalCurrentDate.month == 4 || globalCurrentDate.month == 5){
+        box[0].id = 'scheme2'
+    }
+    if(globalCurrentDate.month == 6 || globalCurrentDate.month == 7 || globalCurrentDate.month == 8){
+        box[0].id = 'scheme3'
+    }
+    if(globalCurrentDate.month == 9 || globalCurrentDate.month == 10 || globalCurrentDate.month == 11){
+        box[0].id = 'scheme4'
+    }
+
     // speechRec();
 
     // var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
