@@ -103,8 +103,25 @@
 }
 
 /* #navbarText{
-    animation: mycolor 6s linear infinite;
+    animation: mycolor5 6s linear infinite;
 } */
+
+@keyframes mycolor5 {
+    0%{
+        color: magenta;
+        float: left;
+    }
+    50%{
+        color: greenyellow;
+        float: right;
+    }
+    100%{
+        color: #777321;
+        float: left;
+    }
+}
+
+
 
 @keyframes mycolor {
     0%{
@@ -176,4 +193,9 @@
     100%{
         background-color: #c4b358
     }
+}
+
+#season{
+    width: 30px;
+    height: 30px;
 }
