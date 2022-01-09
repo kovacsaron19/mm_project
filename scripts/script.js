@@ -124,7 +124,7 @@ function displayCalendar(date) {
             console.log(children[count-1])
             divEl.classList.add('event');
             divEl.innerHTML = dayEvent[0].name;
-            console.log(child.appendChild(divEl))
+            // console.log(child.appendChild(divEl))
             child.appendChild(divEl)
         }
         child.innerHTML = cellDate;
@@ -173,12 +173,12 @@ function displayCalendar(date) {
     let eventStart = null;
 
     grid.addEventListener("mousedown", function (event) {
-        console.log("mousedown ", event.target);
+        // console.log("mousedown ", event.target);
         eventStart = event.target;
     })
 
     grid.addEventListener('mouseup', function (event) {
-        console.log("mouseup ", event.target);
+        // console.log("mouseup ", event.target);
         if (eventStart != event.target) {
             let divEl = document.createElement('div');
             divEl.classList.add('event');
@@ -191,7 +191,7 @@ function displayCalendar(date) {
     })
 
     grid.addEventListener('dblclick', function (event) {
-        console.log("dblclick", event.target);
+        // console.log("dblclick", event.target);
         let divEl = document.createElement('div');
         divEl.classList.add('event');
         divEl.innerHTML = "Event";
