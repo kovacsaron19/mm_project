@@ -64,19 +64,18 @@ function setCurrent(date) {
 
     let children = document.getElementsByClassName(DaysEnums[dayOfWeek]);
     for (var i = 0; i < children.length; i++) {
-        // const innerHtml = children[i].innerHTML;
-        const innerHtml = children[i].childNodes[0].innerHTML;
-        // console.log(innerHtml);
-        if (innerHtml == date.getDate()) {
+        const innerHtml = children[i].innerHTML;
+        //console.log(i + " " + innerHtml + " " + date.getDate());
+        if (children[i].innerHTML == date.getDate()) {
             children[i].classList.add("current");
             // console.log(children[i].classList);
-            return;
         }
 
     }
 }
 
 function displayCalendar(date) {
+    // console.log("here")
     displayDate(date);
     let cellDate = 1;
     var firstWeekday = calculateFirstDay(date);
@@ -104,10 +103,7 @@ function displayCalendar(date) {
         // console.log(child);
         // console.log(firstWeekday)
         if (child.classList.contains(DaysEnums[firstWeekday])) {
-            let divDate = document.createElement('div');
-            divDate.innerHTML = cellDate;
-            child.appendChild(divDate);
-            // child.innerHTML = cellDate;
+            child.innerHTML = cellDate;
             cellDate += 1;
             child = children[count];
             count += 1;
@@ -121,10 +117,6 @@ function displayCalendar(date) {
     while (cellDate <= lastDate) {
         let dayEvent = specificEvents.filter((event) => {return event.date.includes(`${globalCurrentDate.year}-${globalCurrentDate.month}-${cellDate}`)})
         let divEl = document.createElement('div');
-        // child.innerHTML = cellDate;
-        let divDate = document.createElement('div');
-        divDate.innerHTML = cellDate;
-        child.appendChild(divDate);
         if(dayEvent.length !== 0){
             console.log(dayEvent[0])
             console.log(divEl)
@@ -135,6 +127,7 @@ function displayCalendar(date) {
             // console.log(child.appendChild(divEl))
             child.appendChild(divEl)
         }
+        child.innerHTML = cellDate;
         cellDate += 1;
         child = children[count];
         count += 1;
@@ -146,20 +139,18 @@ function displayCalendar(date) {
 
     grid.addEventListener("click", function (event) {
         // console.log("click ", event.target);
-        let evt = event.target;
-        if(!isNaN(event.target.innerHTML)){
-            // console.log("yes");
-            evt = event.target.parentNode;
-        }
-        // console.log(event.target)
-        if (evt != null) {
-            document.getElementById("Date").innerHTML= globalCurrentDate.year + '-' + globalCurrentDate.month + '-' + evt.childNodes[0].innerHTML;
+        if (event.target != null) {
+            document.getElementById("Date").innerHTML= globalCurrentDate.year + '-' + globalCurrentDate.month + '-' + event.target.innerHTML;
             var past = document.getElementsByClassName("current");
-            // console.log(past);
+            // console.log(document.getElementsByClassName("current"));
+            // console.log(document.querySelector(".current"));
+            // console.log(document.getElementsByClassName("current").nextSibling);
+            // console.log(document.querySelector(".current").nextElementSibling);
             past[0].classList.remove("current");
         }
-        evt.classList.add("current");
-        let dayOfMonth = evt.innerHTML;
+        event.target.classList.add("current");
+
+        let dayOfMonth = event.target.innerHTML;
 
         // displayDate(date.getFullYear(), date.getMonth(), dayOfMonth);
     })
@@ -181,35 +172,31 @@ function displayCalendar(date) {
   
     let eventStart = null;
 
-    // grid.addEventListener("mousedown", function (event) {
-    //     console.log("mousedown ", event.target);
-    //     eventStart = event.target;
-    // })
+    grid.addEventListener("mousedown", function (event) {
+        // console.log("mousedown ", event.target);
+        eventStart = event.target;
+    })
 
-    // grid.addEventListener('mouseup', function (event) {
-    //     console.log("mouseup ", event.target);
-    //     if (eventStart != event.target) {
-    //         let divEl = document.createElement('div');
-    //         divEl.classList.add('event');
-    //         divEl.innerHTML = "Event";
-    //         let w = (event.target.childNodes[0].innerHTML - eventStart.childNodes[0].innerHTML + 1) * 90;
-    //         divEl.style.paddingRight = `${w}px`;
-    //         var past = document.getElementsByClassName("current");
-    //         for(let i = 0; i < past.length; i++){
-    //             past[i].classList.remove("current");
-    //         }
-    //         event.target.classList.add("current");
-    //         eventStart.appendChild(divEl);
-    //     }
-    // })
+    grid.addEventListener('mouseup', function (event) {
+        // console.log("mouseup ", event.target);
+        if (eventStart != event.target) {
+            let divEl = document.createElement('div');
+            divEl.classList.add('event');
+            divEl.innerHTML = "Event";
+            // divEl.setAttribute("padding-right", "1000px");
+            // add style for divEl
+            divEl.style.paddingRight = '100px';
+            eventStart.appendChild(divEl);
+        }
+    })
 
     grid.addEventListener('dblclick', function (event) {
         // console.log("dblclick", event.target);
-        // let divEl = document.createElement('div');
-        // divEl.classList.add('event');
-        // divEl.innerHTML = "Event";
-        // event.target.appendChild(divEl);
-        getEventData();
+        let divEl = document.createElement('div');
+        divEl.classList.add('event');
+        divEl.innerHTML = "Event";
+        event.target.appendChild(divEl);
+
     })
 
     let box = document.getElementsByClassName("container")
@@ -239,6 +226,28 @@ function displayCalendar(date) {
         ctx.font = '28px Helvetica';
         ctx.fillText('Calendar', 10, 50); 
     }
+
+    // speechRec();
+
+    // var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+    // var recognition = new SpeechRecognition();
+    // recognition.lang = 'en-US';
+
+    // var speechBtn = document.getElementById("listen")
+    // speechBtn.addEventListener('click', function(event){
+    //     console.log('hi mom')
+    //     recognition.start();
+    // })
+
+    // // recognition.onspeechend = () => {
+    // //     recognition.stop();
+    // // }
+
+    // recognition.onresult = (event) => {
+    //     console.log(event.results)
+        
+    // }  
+
 }
 
 function getEventData(){
@@ -265,7 +274,6 @@ function getEventData(){
 
 function changeMonthMinus() {
     var newDate = new Date(document.getElementById("Date").innerHTML)
-    newDate.setDate(1);
     newDate.setMonth(newDate.getMonth() - 1);
     document.getElementById("Date").innerHTML = newDate;
     document.getElementById("navbarText").innerHTML = newDate.getFullYear() + '-' + (newDate.getMonth() + 1) + '-' + newDate.getDate();
@@ -276,7 +284,6 @@ function changeMonthMinus() {
 
 function changeMonthPlus() {
     var newDate = new Date(document.getElementById("Date").innerHTML)
-    newDate.setDate(1);
     newDate.setMonth(newDate.getMonth() + 1);
     document.getElementById("Date").innerHTML = newDate;
     document.getElementById("navbarText").innerHTML = newDate.getFullYear() + '-' + (newDate.getMonth() + 1) + '-' + newDate.getDate();
